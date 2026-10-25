@@ -1,0 +1,16 @@
+# Local experimental data (commit only deliberately curated, anonymized samples)
+/data/raw/
+/data/derived/
+/data/runs/
+
+# Build outputs and local tool configuration
+/build/
+/firmware/build/
+/host/build/
+sdkconfig
+sdkconfig.old
+.venv/
+__pycache__/
+*.py[cod]
+.idea/
+.vscode/
