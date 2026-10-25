@@ -1,0 +1,2 @@
+# Wifi-microscope GUI
+Purpose: We want a convenient interface to check communication between two chips over serial to ensure the data being sent and recieved is meeting the expectations of the user. This will be a place that eventually evolves into an entire front-end allowing for visualization of the data as it comes in.

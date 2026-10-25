@@ -1,0 +1,60 @@
+/* ESPNOW Example
+
+   This example code is in the Public Domain (or CC0 licensed, at your option.)
+
+   Unless required by applicable law or agreed to in writing, this
+   software is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+   CONDITIONS OF ANY KIND, either express or implied.
+*/
+
+/*
+   This example shows how to use ESPNOW.
+   Prepare two device, one for sending ESPNOW data and another for receiving
+   ESPNOW data.
+*/
+#include <stdlib.h>
+#include <time.h>
+#include <string.h>
+#include <assert.h>
+
+
+#define ESPNOW_MAXDELAY 512
+#define DUTY_CYCLE_PERIOD_MS 100
+
+/* WiFi should start before using ESPNOW */
+static void initialize_wifi(void)
+{
+  // System infra
+  ESP_ERROR_CHECK(esp_netif_init());
+  ESP_ERROR_CHECK(esp_event_loop_create_default());
+
+  // initialize the driver
+  wifi_init_config_t cfg = WIFI_INIT_CONFIG_DEFAULT();
+  ESP_ERROR_CHECK( esp_wifi_init(&cfg) );
+
+  // Configure the wifi interface
+  ESP_ERROR_CHECK( esp_wifi_set_storage(WIFI_STORAGE_RAM) );
+  ESP_ERROR_CHECK( esp_wifi_set_mode(ESPNOW_WIFI_MODE) );
+
+  // Activate the Wi-Fi and select a channel
+  ESP_ERROR_CHECK( esp_wifi_start());
+  ESP_ERROR_CHECK( esp_wifi_set_channel(CONFIG_ESPNOW_CHANNEL, WIFI_SECOND_CHAN_NONE));
+  
+#if CONFIG_ESPNOW_ENABLE_LONG_RANGE
+  ESP_ERROR_CHECK( esp_wifi_set_protocol(ESPNOW_WIFI_IF, WIFI_PROTOCOL_11B|WIFI_PROTOCOL_11G|WIFI_PROTOCOL_11N|WIFI_PROTOCOL_LR) );
+#endif
+}
+
+
+
+void app_main(void)
+{
+    // Initialize NVS
+    initialize_wifi();
+    transmitter_init();
+
+  while (true) {
+    transmit_frame();
+    vTskDelay(pdMS_TO_TICKS(DUTY_CYCLE_PERIOD_MS));
+  }
+}
