@@ -1,47 +1,37 @@
 # Hardware Inventory and CSI Feasibility
 
-## Connected-device observations — 2026-10-24
+## Verified SoC and interface facts
 
-The current Linux execution environment sees two USB serial adapters:
+The researcher reports identifying two separate Espressif ESP32-D0WD-V3 SoCs, each revision v3.1, 4 MB flash, and a 40 MHz crystal. Each board connects through a Silicon Labs CP2102 USB-to-UART bridge and is accessible as `/dev/ttyUSB0` or `/dev/ttyUSB1`. These are researcher-reported observations; this session did not query either chip or inspect test logs.
 
-| Host path | USB adapter | USB VID:PID | Stable path | Access |
-|---|---|---|---|---|
-| `/dev/ttyUSB0` | Silicon Labs CP2102 USB-to-UART bridge (`cp210x`) | `10c4:ea60` | `/dev/serial/by-path/pci-0000:00:14.0-usb-0:11.1:1.0-port0` | Not accessible to current user |
-| `/dev/ttyUSB1` | Silicon Labs CP2102 USB-to-UART bridge (`cp210x`) | `10c4:ea60` | `/dev/serial/by-path/pci-0000:00:14.0-usb-0:10.2:1.0-port0` | Not accessible to current user |
+| Board | SoC | Revision | Flash | Crystal | Host interface |
+|---|---|---|---|---|---|
+| A | ESP32-D0WD-V3 | v3.1 | 4 MB (reported) | 40 MHz (reported) | CP2102 USB-UART; port assignment must be checked before use |
+| B | ESP32-D0WD-V3 | v3.1 | 4 MB (reported) | 40 MHz (reported) | CP2102 USB-UART; port assignment must be checked before use |
 
-`lsusb` showed two CP210x devices. Both tty nodes are owned by `root:uucp` with mode `0660`; the current user is not in `uucp`. No by-id distinction is available: both adapters report the same generic CP2102 identity and adapter serial string. The distinct by-path entries establish two separate USB interfaces, **not** that they are independently connected ESP32 boards. A CP2102 is a USB-to-UART bridge, not an ESP32 identification.
+**Identity boundary:** SoC identity and target family are reported established. Exact development-board and module markings, flash manufacturer, antenna type/location, and which stable USB path maps to which physical board have not been verified. Do not infer module antenna or RF characteristics from the SoC. No MAC addresses, USB serial numbers, or workstation-specific paths are recorded here.
 
-**Not observed:** ESP32 target/family/revision, module and board markings, flash vendor/capacity, antenna, whether both adapters terminate at ESP32 boards, or whether any USB interface is native USB. No esptool query was run because serial access is denied; no hardware flash operation was attempted. USB and serial identities above are inventory data, not proof of board identity.
+## CSI feasibility
 
-To resolve the blocker without changing host configuration: on the workstation with the boards, run `id`, `ls -l /dev/ttyUSB* /dev/ttyACM*`, `ls -l /dev/serial/by-id/ /dev/serial/by-path/`, and `udevadm info --query=property --name=/dev/ttyUSB0` (repeat for the other path). If permitted by the local operator, use the existing serial-port access method and run `uvx --from esptool esptool --port <stable-path> chip-id` followed by `flash-id` for each board. These are identification/read-only queries; do not use write/erase commands. If the boards cannot be identified over serial, provide clear photographs of the module/board markings and antenna area. Do not add udev rules or change group membership without authorization.
+ESP-IDF v5.5.6's [ESP32 Wi-Fi feature list](https://docs.espressif.com/projects/esp-idf/en/v5.5.6/esp32/api-guides/wifi.html#esp32-wi-fi-feature-list) explicitly includes CSI. The version-pinned [`esp-csi` sender](https://github.com/espressif/esp-csi/tree/master/examples/get-started/csi_send) and [receiver](https://github.com/espressif/esp-csi/tree/master/examples/get-started/csi_recv) examples provide an ESP-NOW controlled-packet path. Their current `master` sources are examples, not pinned to an ESP-IDF release; check out a compatible project revision and build for `esp32` before adopting settings.
 
-## CSI compatibility — documentation evidence, target pending
+The v5.5.6 [`esp_wifi.h` API reference](https://docs.espressif.com/projects/esp-idf/en/v5.5.6/esp32/api-reference/network/esp_wifi.html) exposes `esp_wifi_set_csi_rx_cb()`, `esp_wifi_set_csi_config()`, and `esp_wifi_set_csi()`. CSI output and metadata depend on PHY and configuration; raw CSI is not calibrated phase. Do not assume subcarrier layout or phase comparability across targets or runs.
 
-Espressif's maintained [`esp-csi`](https://github.com/espressif/esp-csi) README states family-level CSI support for ESP32, ESP32-S2, ESP32-C3, ESP32-S3, ESP32-C5, ESP32-C6, and ESP32-C61. It provides `examples/get-started/csi_recv` and `csi_send`, plus `csi_recv_router`. This does not identify these boards or establish identical APIs/data formats across targets.
+## Proposed first arrangement (pending confirmation)
 
-The official [ESP-IDF Wi-Fi vendor-features guide for ESP32](https://docs.espressif.com/projects/esp-idf/en/stable/esp32/api-guides/wifi-driver/wifi-vendor-features.html) and [Wi-Fi API reference](https://docs.espressif.com/projects/esp-idf/en/stable/esp32/api-reference/network/esp_wifi.html) document the CSI APIs and `wifi_csi_info_t`. The documented pattern is CSI enabled in configuration (`CONFIG_ESP_WIFI_CSI_ENABLED`), register `esp_wifi_set_csi_rx_cb()`, set `esp_wifi_set_csi_config()`, then enable using `esp_wifi_set_csi()`. The callback is in the Wi-Fi task and should be bounded. Captured CSI is packet/PHY dependent and includes receive-control metadata; it is not inherently calibrated phase. Consult the matching target/release documentation before building.
+Use one board to send sequenced ESP-NOW packets and the other in station mode to receive CSI; roles can be swapped after verifying which serial port controls each board. This path is demonstrated by Espressif's `csi_send`/`csi_recv` pair and does not inherently require an access point. The current sender broadcasts ESP-NOW data on a configured channel. Confirm actual packet reception and CSI callback delivery on our boards before treating this as established.
 
-ESP-IDF v5.5.1's [ESP32-C3 Wi-Fi guide](https://docs.espressif.com/projects/esp-idf/en/v5.5.1/esp32c3/api-guides/wifi.html) specifically notes that `wifi_csi_info_t.first_word_invalid` indicates invalid first four CSI bytes due to a hardware limitation. This demonstrates why the exact target matters; it is not evidence that either connected board is a C3. Exact ESP-IDF target/release API availability, operating-mode and packet-path behavior, and usable CSI metadata remain unverified for these boards.
+## Remaining uncertainties
 
-## Initial experiment recommendation (conditional)
-
-If identification confirms two ESP32 devices supported by the same pinned ESP-IDF release, use one as a controlled packet sender and the other as CSI receiver, following the official get-started `csi_send` / `csi_recv` examples. Start with the direct two-device arrangement if their documented packet path permits reception; the maintained project also describes router-assisted methods, so do not assume an AP is either mandatory or unnecessary until the target-specific example is checked. Use the available UART/USB-serial host path only after confirming board mapping and console behavior; retain raw CSI and driver metadata before any transformation.
-
-No transmitter/receiver assignment is made yet: there is no evidence distinguishing the boards or their antenna/module configurations. No ESP-IDF release is selected because target selection is a prerequisite to validating its versioned API and examples. Do not install the toolchain until this is resolved.
-
-## Remaining blockers and uncertainties
-
-- Determine whether the two CP2102 paths correspond to the two reported physical ESP32 boards.
-- Obtain serial access through an already authorized mechanism; no host permission changes were made.
-- Read each chip family/variant, revision, and flash identification with esptool; match each to physical module/board markings and antenna configuration.
-- Verify each identified target against version-specific CSI APIs, packet reception mode, and official sender/receiver example support; then select a common ESP-IDF release.
-- Confirm repeatable packet source, receiver assignment, host acquisition path and throughput in the first capture. CSI phase calibration, timing, packet loss and measurement repeatability remain experimental questions.
+- Board/module part numbers, PCB-vs-external antenna, antenna orientation, and RF path.
+- Port-to-board mapping and assignment of experimental roles.
+- Exact ESP-NOW payload reception behavior, channel/rate/bandwidth configuration, and CSI length/format on the boards.
+- UART throughput/loss with CSI output; callback buffering and record transport remain to be designed and measured.
+- CSI phase calibration and repeatability are not implied by successful CSI reception.
 
 ## References
 
-- [Espressif `esp-csi`](https://github.com/espressif/esp-csi) — maintained family-level support statement and sender/receiver/router examples.
-- [ESP-IDF Wi-Fi Vendor Features (ESP32, stable)](https://docs.espressif.com/projects/esp-idf/en/stable/esp32/api-guides/wifi-driver/wifi-vendor-features.html) — CSI configuration and interpretation.
-- [ESP-IDF Wi-Fi API Reference (ESP32, stable)](https://docs.espressif.com/projects/esp-idf/en/stable/esp32/api-reference/network/esp_wifi.html) — API declarations and CSI metadata types.
-- [ESP-IDF Wi-Fi Guide (ESP32-C3 v5.5.1)](https://docs.espressif.com/projects/esp-idf/en/v5.5.1/esp32c3/api-guides/wifi.html) — target-specific `first_word_invalid` limitation.
-
-Version selection is deferred until both actual targets are identified; `stable` documentation can move and is not itself a release pin.
+- [ESP-IDF v5.5.6 ESP32 Wi-Fi guide](https://docs.espressif.com/projects/esp-idf/en/v5.5.6/esp32/api-guides/wifi.html)
+- [ESP-IDF v5.5.6 Wi-Fi API reference](https://docs.espressif.com/projects/esp-idf/en/v5.5.6/esp32/api-reference/network/esp_wifi.html)
+- [ESP-IDF v5.5.6 Wi-Fi API header](https://github.com/espressif/esp-idf/blob/v5.5.6/components/esp_wifi/include/esp_wifi.h)
+- [Espressif esp-csi repository](https://github.com/espressif/esp-csi)
