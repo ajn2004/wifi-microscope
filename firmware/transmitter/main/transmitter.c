@@ -5,7 +5,7 @@
 #include <assert.h>
 #include <stdbool.h>
 #include <stdint.h>
-
+#include <string.h>
 #include "esp_err.h"
 #include "esp_event.h"
 #include "esp_netif.h"
