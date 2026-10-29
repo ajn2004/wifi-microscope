@@ -1,22 +1,19 @@
-/* ESPNOW Example
-
-   This example code is in the Public Domain (or CC0 licensed, at your option.)
-
-   Unless required by applicable law or agreed to in writing, this
-   software is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
-   CONDITIONS OF ANY KIND, either express or implied.
-*/
-
 /*
-   This example shows how to use ESPNOW.
-   Prepare two device, one for sending ESPNOW data and another for receiving
-   ESPNOW data.
+  transmitter main
+  This will be the main code for the transmitter chip, establishing what signal gets sent and how often. 
 */
-#include <stdlib.h>
-#include <time.h>
-#include <string.h>
 #include <assert.h>
+#include <stdbool.h>
+#include <stdint.h>
 
+#include "esp_err.h"
+#include "esp_event.h"
+#include "esp_netif.h"
+#include "esp_wifi.h"
+#include "nvs_flash.h"
+
+#include "freertos/FreeRTOS.h"
+#include "freertos/task.h"
 
 #define ESPNOW_MAXDELAY 512
 #define DUTY_CYCLE_PERIOD_MS 100
@@ -45,16 +42,17 @@ static void initialize_wifi(void)
 #endif
 }
 
-
+void transmit_frame(){}
 
 void app_main(void)
 {
-    // Initialize NVS
-    initialize_wifi();
-    transmitter_init();
+  // Initialize the wifi configuration
+  initialize_wifi();
+  // initialize the bespoke transmistter setup
+  //transmitter_init();
 
   while (true) {
     transmit_frame();
-    vTskDelay(pdMS_TO_TICKS(DUTY_CYCLE_PERIOD_MS));
-  }
+    vTaskDelay(pdMS_TO_TICKS(DUTY_CYCLE_PERIOD_MS));
+  };
 }
