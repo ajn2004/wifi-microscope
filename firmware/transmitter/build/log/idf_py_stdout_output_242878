@@ -1,0 +1,524 @@
+Command: /home/andrew/.espressif/python_env/idf5.5_py3.14_env/bin/python /home/andrew/esp/esp-idf-v5.5.6/tools/idf_monitor.py -p /dev/ttyUSB0 -b 115200 --toolchain-prefix xtensa-esp32-elf- --target esp32 --revision 0 /mnt/ohval/code/wifi-microscope/firmware/transmitter/build/wifi_microscope_tx.elf /mnt/ohval/code/wifi-microscope/firmware/transmitter/build/bootloader/bootloader.elf -m '/home/andrew/.espressif/python_env/idf5.5_py3.14_env/bin/python' '/home/andrew/esp/esp-idf-v5.5.6/tools/idf.py' '-p' '/dev/ttyUSB0'
+ets Jul 29 2019 12:21:46
+
+rst:0x1 (POWERON_RESET),boot:0x13 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:2
+load:0x3fff0030,len:6180
+load:0x40078000,len:15852
+load:0x40080400,len:3876
+entry 0x4008063c
+[0;32mI (27) boot: ESP-IDF v5.5.6 2nd stage bootloader[0m
+[0;32mI (27) boot: compile time Oct 29 2026 14:05:58[0m
+[0;32mI (28) boot: chip revision: v3.1[0m
+[0;32mI (29) boot.esp32: SPI Speed      : 40MHz[0m
+[0;32mI (32) boot.esp32: SPI Mode       : DIO[0m
+[0;32mI (36) boot.esp32: SPI Flash Size : 2MB[0m
+[0;32mI (39) boot: Partition Table:[0m
+[0;32mI (42) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (48) boot:  0 nvs              WiFi data        01 02 00009000 00006000[0m
+[0;32mI (55) boot:  1 phy_init         RF data          01 01 0000f000 00001000[0m
+[0;32mI (61) boot:  2 factory          factory app      00 00 00010000 00100000[0m
+[0;32mI (68) esp_image: segment 0: paddr=00010020 vaddr=3f400020 size=178e8h ( 96488) map[0m
+[0;32mI (108) esp_image: segment 1: paddr=00027910 vaddr=3ffb0000 size=04338h ( 17208) load[0m
+[0;32mI (115) esp_image: segment 2: paddr=0002bc50 vaddr=40080000 size=043c8h ( 17352) load[0m
+[0;32mI (122) esp_image: segment 3: paddr=00030020 vaddr=400d0020 size=7dfd0h (516048) map[0m
+[0;32mI (299) esp_image: segment 4: paddr=000adff8 vaddr=400843c8 size=13ac8h ( 80584) load[0m
+[0;32mI (331) esp_image: segment 5: paddr=000c1ac8 vaddr=50000000 size=00020h (    32) load[0m
+[0;32mI (343) boot: Loaded app from partition at offset 0x10000[0m
+[0;32mI (349) cpu_start: Multicore app[0m
+[0;32mI (357) cpu_start: GPIO 3 and 1 are used as console UART I/O pins[0m
+[0;32mI (357) cpu_start: Pro cpu start user code[0m
+[0;32mI (357) cpu_start: cpu freq: 160000000 Hz[0m
+[0;32mI (359) app_init: Application information:[0m
+[0;32mI (363) app_init: Project name:     wifi_microscope_tx[0m
+[0;32mI (368) app_init: App version:      1662db8-dirty[0m
+[0;32mI (372) app_init: Compile time:     Oct 29 2026 14:45:07[0m
+[0;32mI (377) app_init: ELF file SHA256:  15ca8cd34...[0m
+[0;32mI (382) app_init: ESP-IDF:          v5.5.6[0m
+[0;32mI (385) efuse_init: Min chip rev:     v0.0[0m
+[0;32mI (389) efuse_init: Max chip rev:     v3.99 [0m
+[0;32mI (393) efuse_init: Chip rev:         v3.1[0m
+[0;32mI (397) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (403) heap_init: At 3FFAE6E0 len 00001920 (6 KiB): DRAM[0m
+[0;32mI (408) heap_init: At 3FFB86A0 len 00027960 (158 KiB): DRAM[0m
+[0;32mI (414) heap_init: At 3FFE0440 len 00003AE0 (14 KiB): D/IRAM[0m
+[0;32mI (419) heap_init: At 3FFE4350 len 0001BCB0 (111 KiB): D/IRAM[0m
+[0;32mI (425) heap_init: At 40097E90 len 00008170 (32 KiB): IRAM[0m
+[0;32mI (431) spi_flash: detected chip: generic[0m
+[0;32mI (433) spi_flash: flash io: dio[0m
+[0;33mW (436) spi_flash: Detected size(4096k) larger than the size in the binary image header(2048k). Using the size in the binary image header.[0m
+[0;32mI (450) main_task: Started on CPU0[0m
+[0;32mI (450) main_task: Calling app_main()[0m
+[0;32mI (470) wifi:wifi driver task: 3ffc01fc, prio:23, stack:6656, core=0[0m
+[0;32mI (470) wifi:wifi firmware version: c6dceae[0m
+[0;32mI (470) wifi:wifi certification version: v7.0[0m
+[0;32mI (470) wifi:config NVS flash: enabled[0m
+[0;32mI (470) wifi:config nano formatting: disabled[0m
+[0;32mI (480) wifi:Init data frame dynamic rx buffer num: 32[0m
+[0;32mI (480) wifi:Init static rx mgmt buffer num: 5[0m
+[0;32mI (490) wifi:Init management short buffer num: 32[0m
+[0;32mI (490) wifi:Init dynamic tx buffer num: 32[0m
+[0;32mI (500) wifi:Init static rx buffer size: 1600[0m
+[0;32mI (500) wifi:Init static rx buffer num: 10[0m
+[0;32mI (500) wifi:Init dynamic rx buffer num: 32[0m
+[0;32mI (510) wifi_init: rx ba win: 6[0m
+[0;32mI (510) wifi_init: accept mbox: 6[0m
+[0;32mI (510) wifi_init: tcpip mbox: 32[0m
+[0;32mI (520) wifi_init: udp mbox: 6[0m
+[0;32mI (520) wifi_init: tcp mbox: 6[0m
+[0;32mI (520) wifi_init: tcp tx win: 5760[0m
+[0;32mI (530) wifi_init: tcp rx win: 5760[0m
+[0;32mI (530) wifi_init: tcp mss: 1440[0m
+[0;32mI (530) wifi_init: WiFi IRAM OP enabled[0m
+[0;32mI (540) wifi_init: WiFi RX IRAM OP enabled[0m
+[0;32mI (540) phy_init: phy_version 4863,a3a4459,Oct 28 2025,14:30:06[0m
+[0;32mI (630) wifi:mode : sta (1c:c3:ab:3c:96:10)[0m
+[0;32mI (630) wifi:enable tsf[0m
+[0;32mI (630) TX: Transmitter loop running[0m
+[0;32mI (730) TX: Transmitter loop running[0m
+[0;32mI (830) TX: Transmitter loop running[0m
+[0;32mI (930) TX: Transmitter loop running[0m
+[0;32mI (1030) TX: Transmitter loop running[0m
+[0;32mI (1130) TX: Transmitter loop running[0m
+[0;32mI (1230) TX: Transmitter loop running[0m
+[0;32mI (1330) TX: Transmitter loop running[0m
+[0;32mI (1430) TX: Transmitter loop running[0m
+[0;32mI (1530) TX: Transmitter loop running[0m
+[0;32mI (1630) TX: Transmitter loop running[0m
+[0;32mI (1730) TX: Transmitter loop running[0m
+[0;32mI (1830) TX: Transmitter loop running[0m
+[0;32mI (1930) TX: Transmitter loop running[0m
+[0;32mI (2030) TX: Transmitter loop running[0m
+[0;32mI (2130) TX: Transmitter loop running[0m
+[0;32mI (2230) TX: Transmitter loop running[0m
+[0;32mI (2330) TX: Transmitter loop running[0m
+[0;32mI (2430) TX: Transmitter loop running[0m
+[0;32mI (2530) TX: Transmitter loop running[0m
+[0;32mI (2630) TX: Transmitter loop running[0m
+[0;32mI (2730) TX: Transmitter loop running[0m
+[0;32mI (2830) TX: Transmitter loop running[0m
+[0;32mI (2930) TX: Transmitter loop running[0m
+[0;32mI (3030) TX: Transmitter loop running[0m
+[0;32mI (3130) TX: Transmitter loop running[0m
+[0;32mI (3230) TX: Transmitter loop running[0m
+[0;32mI (3330) TX: Transmitter loop running[0m
+[0;32mI (3430) TX: Transmitter loop running[0m
+[0;32mI (3530) TX: Transmitter loop running[0m
+[0;32mI (3630) TX: Transmitter loop running[0m
+[0;32mI (3730) TX: Transmitter loop running[0m
+[0;32mI (3830) TX: Transmitter loop running[0m
+[0;32mI (3930) TX: Transmitter loop running[0m
+[0;32mI (4030) TX: Transmitter loop running[0m
+[0;32mI (4130) TX: Transmitter loop running[0m
+[0;32mI (4230) TX: Transmitter loop running[0m
+[0;32mI (4330) TX: Transmitter loop running[0m
+[0;32mI (4430) TX: Transmitter loop running[0m
+[0;32mI (4530) TX: Transmitter loop running[0m
+[0;32mI (4630) TX: Transmitter loop running[0m
+[0;32mI (4730) TX: Transmitter loop running[0m
+[0;32mI (4830) TX: Transmitter loop running[0m
+[0;32mI (4930) TX: Transmitter loop running[0m
+[0;32mI (5030) TX: Transmitter loop running[0m
+[0;32mI (5130) TX: Transmitter loop running[0m
+[0;32mI (5230) TX: Transmitter loop running[0m
+[0;32mI (5330) TX: Transmitter loop running[0m
+[0;32mI (5430) TX: Transmitter loop running[0m
+[0;32mI (5530) TX: Transmitter loop running[0m
+[0;32mI (5630) TX: Transmitter loop running[0m
+[0;32mI (5730) TX: Transmitter loop running[0m
+[0;32mI (5830) TX: Transmitter loop running[0m
+[0;32mI (5930) TX: Transmitter loop running[0m
+[0;32mI (6030) TX: Transmitter loop running[0m
+[0;32mI (6130) TX: Transmitter loop running[0m
+[0;32mI (6230) TX: Transmitter loop running[0m
+[0;32mI (6330) TX: Transmitter loop running[0m
+[0;32mI (6430) TX: Transmitter loop running[0m
+[0;32mI (6530) TX: Transmitter loop running[0m
+[0;32mI (6630) TX: Transmitter loop running[0m
+[0;32mI (6730) TX: Transmitter loop running[0m
+[0;32mI (6830) TX: Transmitter loop running[0m
+[0;32mI (6930) TX: Transmitter loop running[0m
+[0;32mI (7030) TX: Transmitter loop running[0m
+[0;32mI (7130) TX: Transmitter loop running[0m
+[0;32mI (7230) TX: Transmitter loop running[0m
+[0;32mI (7330) TX: Transmitter loop running[0m
+[0;32mI (7430) TX: Transmitter loop running[0m
+[0;32mI (7530) TX: Transmitter loop running[0m
+[0;32mI (7630) TX: Transmitter loop running[0m
+[0;32mI (7730) TX: Transmitter loop running[0m
+[0;32mI (7830) TX: Transmitter loop running[0m
+[0;32mI (7930) TX: Transmitter loop running[0m
+[0;32mI (8030) TX: Transmitter loop running[0m
+[0;32mI (8130) TX: Transmitter loop running[0m
+[0;32mI (8230) TX: Transmitter loop running[0m
+[0;32mI (8330) TX: Transmitter loop running[0m
+[0;32mI (8430) TX: Transmitter loop running[0m
+[0;32mI (8530) TX: Transmitter loop running[0m
+[0;32mI (8630) TX: Transmitter loop running[0m
+[0;32mI (8730) TX: Transmitter loop running[0m
+[0;32mI (8830) TX: Transmitter loop running[0m
+[0;32mI (8930) TX: Transmitter loop running[0m
+[0;32mI (9030) TX: Transmitter loop running[0m
+[0;32mI (9130) TX: Transmitter loop running[0m
+[0;32mI (9230) TX: Transmitter loop running[0m
+[0;32mI (9330) TX: Transmitter loop running[0m
+[0;32mI (9430) TX: Transmitter loop running[0m
+[0;32mI (9530) TX: Transmitter loop running[0m
+[0;32mI (9630) TX: Transmitter loop running[0m
+[0;32mI (9730) TX: Transmitter loop running[0m
+[0;32mI (9830) TX: Transmitter loop running[0m
+[0;32mI (9930) TX: Transmitter loop running[0m
+[0;32mI (10030) TX: Transmitter loop running[0m
+[0;32mI (10130) TX: Transmitter loop running[0m
+[0;32mI (10230) TX: Transmitter loop running[0m
+[0;32mI (10330) TX: Transmitter loop running[0m
+[0;32mI (10430) TX: Transmitter loop running[0m
+[0;32mI (10530) TX: Transmitter loop running[0m
+[0;32mI (10630) TX: Transmitter loop running[0m
+[0;32mI (10730) TX: Transmitter loop running[0m
+[0;32mI (10830) TX: Transmitter loop running[0m
+[0;32mI (10930) TX: Transmitter loop running[0m
+[0;32mI (11030) TX: Transmitter loop running[0m
+[0;32mI (11130) TX: Transmitter loop running[0m
+[0;32mI (11230) TX: Transmitter loop running[0m
+[0;32mI (11330) TX: Transmitter loop running[0m
+[0;32mI (11430) TX: Transmitter loop running[0m
+[0;32mI (11530) TX: Transmitter loop running[0m
+[0;32mI (11630) TX: Transmitter loop running[0m
+[0;32mI (11730) TX: Transmitter loop running[0m
+[0;32mI (11830) TX: Transmitter loop running[0m
+[0;32mI (11930) TX: Transmitter loop running[0m
+[0;32mI (12030) TX: Transmitter loop running[0m
+[0;32mI (12130) TX: Transmitter loop running[0m
+[0;32mI (12230) TX: Transmitter loop running[0m
+[0;32mI (12330) TX: Transmitter loop running[0m
+[0;32mI (12430) TX: Transmitter loop running[0m
+[0;32mI (12530) TX: Transmitter loop running[0m
+[0;32mI (12630) TX: Transmitter loop running[0m
+[0;32mI (12730) TX: Transmitter loop running[0m
+[0;32mI (12830) TX: Transmitter loop running[0m
+[0;32mI (12930) TX: Transmitter loop running[0m
+[0;32mI (13030) TX: Transmitter loop running[0m
+[0;32mI (13130) TX: Transmitter loop running[0m
+[0;32mI (13230) TX: Transmitter loop running[0m
+[0;32mI (13330) TX: Transmitter loop running[0m
+[0;32mI (13430) TX: Transmitter loop running[0m
+[0;32mI (13530) TX: Transmitter loop running[0m
+[0;32mI (13630) TX: Transmitter loop running[0m
+[0;32mI (13730) TX: Transmitter loop running[0m
+[0;32mI (13830) TX: Transmitter loop running[0m
+[0;32mI (13930) TX: Transmitter loop running[0m
+[0;32mI (14030) TX: Transmitter loop running[0m
+[0;32mI (14130) TX: Transmitter loop running[0m
+[0;32mI (14230) TX: Transmitter loop running[0m
+[0;32mI (14330) TX: Transmitter loop running[0m
+[0;32mI (14430) TX: Transmitter loop running[0m
+[0;32mI (14530) TX: Transmitter loop running[0m
+[0;32mI (14630) TX: Transmitter loop running[0m
+[0;32mI (14730) TX: Transmitter loop running[0m
+[0;32mI (14830) TX: Transmitter loop running[0m
+[0;32mI (14930) TX: Transmitter loop running[0m
+[0;32mI (15030) TX: Transmitter loop running[0m
+[0;32mI (15130) TX: Transmitter loop running[0m
+[0;32mI (15230) TX: Transmitter loop running[0m
+[0;32mI (15330) TX: Transmitter loop running[0m
+[0;32mI (15430) TX: Transmitter loop running[0m
+[0;32mI (15530) TX: Transmitter loop running[0m
+[0;32mI (15630) TX: Transmitter loop running[0m
+[0;32mI (15730) TX: Transmitter loop running[0m
+[0;32mI (15830) TX: Transmitter loop running[0m
+[0;32mI (15930) TX: Transmitter loop running[0m
+[0;32mI (16030) TX: Transmitter loop running[0m
+[0;32mI (16130) TX: Transmitter loop running[0m
+[0;32mI (16230) TX: Transmitter loop running[0m
+[0;32mI (16330) TX: Transmitter loop running[0m
+[0;32mI (16430) TX: Transmitter loop running[0m
+[0;32mI (16530) TX: Transmitter loop running[0m
+[0;32mI (16630) TX: Transmitter loop running[0m
+[0;32mI (16730) TX: Transmitter loop running[0m
+[0;32mI (16830) TX: Transmitter loop running[0m
+[0;32mI (16930) TX: Transmitter loop running[0m
+[0;32mI (17030) TX: Transmitter loop running[0m
+[0;32mI (17130) TX: Transmitter loop running[0m
+[0;32mI (17230) TX: Transmitter loop running[0m
+[0;32mI (17330) TX: Transmitter loop running[0m
+[0;32mI (17430) TX: Transmitter loop running[0m
+[0;32mI (17530) TX: Transmitter loop running[0m
+[0;32mI (17630) TX: Transmitter loop running[0m
+[0;32mI (17730) TX: Transmitter loop running[0m
+[0;32mI (17830) TX: Transmitter loop running[0m
+[0;32mI (17930) TX: Transmitter loop running[0m
+[0;32mI (18030) TX: Transmitter loop running[0m
+[0;32mI (18130) TX: Transmitter loop running[0m
+[0;32mI (18230) TX: Transmitter loop running[0m
+[0;32mI (18330) TX: Transmitter loop running[0m
+[0;32mI (18430) TX: Transmitter loop running[0m
+[0;32mI (18530) TX: Transmitter loop running[0m
+[0;32mI (18630) TX: Transmitter loop running[0m
+[0;32mI (18730) TX: Transmitter loop running[0m
+[0;32mI (18830) TX: Transmitter loop running[0m
+[0;32mI (18930) TX: Transmitter loop running[0m
+[0;32mI (19030) TX: Transmitter loop running[0m
+[0;32mI (19130) TX: Transmitter loop running[0m
+[0;32mI (19230) TX: Transmitter loop running[0m
+[0;32mI (19330) TX: Transmitter loop running[0m
+[0;32mI (19430) TX: Transmitter loop running[0m
+[0;32mI (19530) TX: Transmitter loop running[0m
+[0;32mI (19630) TX: Transmitter loop running[0m
+[0;32mI (19730) TX: Transmitter loop running[0m
+[0;32mI (19830) TX: Transmitter loop running[0m
+[0;32mI (19930) TX: Transmitter loop running[0m
+[0;32mI (20030) TX: Transmitter loop running[0m
+[0;32mI (20130) TX: Transmitter loop running[0m
+[0;32mI (20230) TX: Transmitter loop running[0m
+[0;32mI (20330) TX: Transmitter loop running[0m
+[0;32mI (20430) TX: Transmitter loop running[0m
+[0;32mI (20530) TX: Transmitter loop running[0m
+[0;32mI (20630) TX: Transmitter loop running[0m
+[0;32mI (20730) TX: Transmitter loop running[0m
+[0;32mI (20830) TX: Transmitter loop running[0m
+[0;32mI (20930) TX: Transmitter loop running[0m
+[0;32mI (21030) TX: Transmitter loop running[0m
+[0;32mI (21130) TX: Transmitter loop running[0m
+[0;32mI (21230) TX: Transmitter loop running[0m
+[0;32mI (21330) TX: Transmitter loop running[0m
+[0;32mI (21430) TX: Transmitter loop running[0m
+[0;32mI (21530) TX: Transmitter loop running[0m
+[0;32mI (21630) TX: Transmitter loop running[0m
+[0;32mI (21730) TX: Transmitter loop running[0m
+[0;32mI (21830) TX: Transmitter loop running[0m
+[0;32mI (21930) TX: Transmitter loop running[0m
+[0;32mI (22030) TX: Transmitter loop running[0m
+[0;32mI (22130) TX: Transmitter loop running[0m
+[0;32mI (22230) TX: Transmitter loop running[0m
+[0;32mI (22330) TX: Transmitter loop running[0m
+[0;32mI (22430) TX: Transmitter loop running[0m
+[0;32mI (22530) TX: Transmitter loop running[0m
+[0;32mI (22630) TX: Transmitter loop running[0m
+[0;32mI (22730) TX: Transmitter loop running[0m
+[0;32mI (22830) TX: Transmitter loop running[0m
+[0;32mI (22930) TX: Transmitter loop running[0m
+[0;32mI (23030) TX: Transmitter loop running[0m
+[0;32mI (23130) TX: Transmitter loop running[0m
+[0;32mI (23230) TX: Transmitter loop running[0m
+[0;32mI (23330) TX: Transmitter loop running[0m
+[0;32mI (23430) TX: Transmitter loop running[0m
+[0;32mI (23530) TX: Transmitter loop running[0m
+[0;32mI (23630) TX: Transmitter loop running[0m
+[0;32mI (23730) TX: Transmitter loop running[0m
+[0;32mI (23830) TX: Transmitter loop running[0m
+[0;32mI (23930) TX: Transmitter loop running[0m
+[0;32mI (24030) TX: Transmitter loop running[0m
+[0;32mI (24130) TX: Transmitter loop running[0m
+[0;32mI (24230) TX: Transmitter loop running[0m
+[0;32mI (24330) TX: Transmitter loop running[0m
+[0;32mI (24430) TX: Transmitter loop running[0m
+[0;32mI (24530) TX: Transmitter loop running[0m
+[0;32mI (24630) TX: Transmitter loop running[0m
+[0;32mI (24730) TX: Transmitter loop running[0m
+[0;32mI (24830) TX: Transmitter loop running[0m
+[0;32mI (24930) TX: Transmitter loop running[0m
+[0;32mI (25030) TX: Transmitter loop running[0m
+[0;32mI (25130) TX: Transmitter loop running[0m
+[0;32mI (25230) TX: Transmitter loop running[0m
+[0;32mI (25330) TX: Transmitter loop running[0m
+[0;32mI (25430) TX: Transmitter loop running[0m
+[0;32mI (25530) TX: Transmitter loop running[0m
+[0;32mI (25630) TX: Transmitter loop running[0m
+[0;32mI (25730) TX: Transmitter loop running[0m
+[0;32mI (25830) TX: Transmitter loop running[0m
+[0;32mI (25930) TX: Transmitter loop running[0m
+[0;32mI (26030) TX: Transmitter loop running[0m
+[0;32mI (26130) TX: Transmitter loop running[0m
+[0;32mI (26230) TX: Transmitter loop running[0m
+[0;32mI (26330) TX: Transmitter loop running[0m
+[0;32mI (26430) TX: Transmitter loop running[0m
+[0;32mI (26530) TX: Transmitter loop running[0m
+[0;32mI (26630) TX: Transmitter loop running[0m
+[0;32mI (26730) TX: Transmitter loop running[0m
+[0;32mI (26830) TX: Transmitter loop running[0m
+[0;32mI (26930) TX: Transmitter loop running[0m
+[0;32mI (27030) TX: Transmitter loop running[0m
+[0;32mI (27130) TX: Transmitter loop running[0m
+[0;32mI (27230) TX: Transmitter loop running[0m
+[0;32mI (27330) TX: Transmitter loop running[0m
+[0;32mI (27430) TX: Transmitter loop running[0m
+[0;32mI (27530) TX: Transmitter loop running[0m
+[0;32mI (27630) TX: Transmitter loop running[0m
+[0;32mI (27730) TX: Transmitter loop running[0m
+[0;32mI (27830) TX: Transmitter loop running[0m
+[0;32mI (27930) TX: Transmitter loop running[0m
+[0;32mI (28030) TX: Transmitter loop running[0m
+[0;32mI (28130) TX: Transmitter loop running[0m
+[0;32mI (28230) TX: Transmitter loop running[0m
+[0;32mI (28330) TX: Transmitter loop running[0m
+[0;32mI (28430) TX: Transmitter loop running[0m
+[0;32mI (28530) TX: Transmitter loop running[0m
+[0;32mI (28630) TX: Transmitter loop running[0m
+[0;32mI (28730) TX: Transmitter loop running[0m
+[0;32mI (28830) TX: Transmitter loop running[0m
+[0;32mI (28930) TX: Transmitter loop running[0m
+[0;32mI (29030) TX: Transmitter loop running[0m
+[0;32mI (29130) TX: Transmitter loop running[0m
+[0;32mI (29230) TX: Transmitter loop running[0m
+[0;32mI (29330) TX: Transmitter loop running[0m
+[0;32mI (29430) TX: Transmitter loop running[0m
+[0;32mI (29530) TX: Transmitter loop running[0m
+[0;32mI (29630) TX: Transmitter loop running[0m
+[0;32mI (29730) TX: Transmitter loop running[0m
+[0;32mI (29830) TX: Transmitter loop running[0m
+[0;32mI (29930) TX: Transmitter loop running[0m
+[0;32mI (30030) TX: Transmitter loop running[0m
+[0;32mI (30130) TX: Transmitter loop running[0m
+[0;32mI (30230) TX: Transmitter loop running[0m
+[0;32mI (30330) TX: Transmitter loop running[0m
+[0;32mI (30430) TX: Transmitter loop running[0m
+[0;32mI (30530) TX: Transmitter loop running[0m
+[0;32mI (30630) TX: Transmitter loop running[0m
+[0;32mI (30730) TX: Transmitter loop running[0m
+[0;32mI (30830) TX: Transmitter loop running[0m
+[0;32mI (30930) TX: Transmitter loop running[0m
+[0;32mI (31030) TX: Transmitter loop running[0m
+[0;32mI (31130) TX: Transmitter loop running[0m
+[0;32mI (31230) TX: Transmitter loop running[0m
+[0;32mI (31330) TX: Transmitter loop running[0m
+[0;32mI (31430) TX: Transmitter loop running[0m
+[0;32mI (31530) TX: Transmitter loop running[0m
+[0;32mI (31630) TX: Transmitter loop running[0m
+[0;32mI (31730) TX: Transmitter loop running[0m
+[0;32mI (31830) TX: Transmitter loop running[0m
+[0;32mI (31930) TX: Transmitter loop running[0m
+[0;32mI (32030) TX: Transmitter loop running[0m
+[0;32mI (32130) TX: Transmitter loop running[0m
+[0;32mI (32230) TX: Transmitter loop running[0m
+[0;32mI (32330) TX: Transmitter loop running[0m
+[0;32mI (32430) TX: Transmitter loop running[0m
+[0;32mI (32530) TX: Transmitter loop running[0m
+[0;32mI (32630) TX: Transmitter loop running[0m
+[0;32mI (32730) TX: Transmitter loop running[0m
+[0;32mI (32830) TX: Transmitter loop running[0m
+[0;32mI (32930) TX: Transmitter loop running[0m
+[0;32mI (33030) TX: Transmitter loop running[0m
+[0;32mI (33130) TX: Transmitter loop running[0m
+[0;32mI (33230) TX: Transmitter loop running[0m
+[0;32mI (33330) TX: Transmitter loop running[0m
+[0;32mI (33430) TX: Transmitter loop running[0m
+[0;32mI (33530) TX: Transmitter loop running[0m
+[0;32mI (33630) TX: Transmitter loop running[0m
+[0;32mI (33730) TX: Transmitter loop running[0m
+[0;32mI (33830) TX: Transmitter loop running[0m
+[0;32mI (33930) TX: Transmitter loop running[0m
+[0;32mI (34030) TX: Transmitter loop running[0m
+[0;32mI (34130) TX: Transmitter loop running[0m
+[0;32mI (34230) TX: Transmitter loop running[0m
+[0;32mI (34330) TX: Transmitter loop running[0m
+[0;32mI (34430) TX: Transmitter loop running[0m
+[0;32mI (34530) TX: Transmitter loop running[0m
+[0;32mI (34630) TX: Transmitter loop running[0m
+[0;32mI (34730) TX: Transmitter loop running[0m
+[0;32mI (34830) TX: Transmitter loop running[0m
+[0;32mI (34930) TX: Transmitter loop running[0m
+[0;32mI (35030) TX: Transmitter loop running[0m
+[0;32mI (35130) TX: Transmitter loop running[0m
+[0;32mI (35230) TX: Transmitter loop running[0m
+[0;32mI (35330) TX: Transmitter loop running[0m
+[0;32mI (35430) TX: Transmitter loop running[0m
+[0;32mI (35530) TX: Transmitter loop running[0m
+[0;32mI (35630) TX: Transmitter loop running[0m
+[0;32mI (35730) TX: Transmitter loop running[0m
+[0;32mI (35830) TX: Transmitter loop running[0m
+[0;32mI (35930) TX: Transmitter loop running[0m
+[0;32mI (36030) TX: Transmitter loop running[0m
+[0;32mI (36130) TX: Transmitter loop running[0m
+[0;32mI (36230) TX: Transmitter loop running[0m
+[0;32mI (36330) TX: Transmitter loop running[0m
+[0;32mI (36430) TX: Transmitter loop running[0m
+[0;32mI (36530) TX: Transmitter loop running[0m
+[0;32mI (36630) TX: Transmitter loop running[0m
+[0;32mI (36730) TX: Transmitter loop running[0m
+[0;32mI (36830) TX: Transmitter loop running[0m
+[0;32mI (36930) TX: Transmitter loop running[0m
+[0;32mI (37030) TX: Transmitter loop running[0m
+[0;32mI (37130) TX: Transmitter loop running[0m
+[0;32mI (37230) TX: Transmitter loop running[0m
+[0;32mI (37330) TX: Transmitter loop running[0m
+[0;32mI (37430) TX: Transmitter loop running[0m
+[0;32mI (37530) TX: Transmitter loop running[0m
+[0;32mI (37630) TX: Transmitter loop running[0m
+[0;32mI (37730) TX: Transmitter loop running[0m
+[0;32mI (37830) TX: Transmitter loop running[0m
+[0;32mI (37930) TX: Transmitter loop running[0m
+[0;32mI (38030) TX: Transmitter loop running[0m
+[0;32mI (38130) TX: Transmitter loop running[0m
+[0;32mI (38230) TX: Transmitter loop running[0m
+[0;32mI (38330) TX: Transmitter loop running[0m
+[0;32mI (38430) TX: Transmitter loop running[0m
+[0;32mI (38530) TX: Transmitter loop running[0m
+[0;32mI (38630) TX: Transmitter loop running[0m
+[0;32mI (38730) TX: Transmitter loop running[0m
+[0;32mI (38830) TX: Transmitter loop running[0m
+[0;32mI (38930) TX: Transmitter loop running[0m
+[0;32mI (39030) TX: Transmitter loop running[0m
+[0;32mI (39130) TX: Transmitter loop running[0m
+[0;32mI (39230) TX: Transmitter loop running[0m
+[0;32mI (39330) TX: Transmitter loop running[0m
+[0;32mI (39430) TX: Transmitter loop running[0m
+[0;32mI (39530) TX: Transmitter loop running[0m
+[0;32mI (39630) TX: Transmitter loop running[0m
+[0;32mI (39730) TX: Transmitter loop running[0m
+[0;32mI (39830) TX: Transmitter loop running[0m
+[0;32mI (39930) TX: Transmitter loop running[0m
+[0;32mI (40030) TX: Transmitter loop running[0m
+[0;32mI (40130) TX: Transmitter loop running[0m
+[0;32mI (40230) TX: Transmitter loop running[0m
+[0;32mI (40330) TX: Transmitter loop running[0m
+[0;32mI (40430) TX: Transmitter loop running[0m
+[0;32mI (40530) TX: Transmitter loop running[0m
+[0;32mI (40630) TX: Transmitter loop running[0m
+[0;32mI (40730) TX: Transmitter loop running[0m
+[0;32mI (40830) TX: Transmitter loop running[0m
+[0;32mI (40930) TX: Transmitter loop running[0m
+[0;32mI (41030) TX: Transmitter loop running[0m
+[0;32mI (41130) TX: Transmitter loop running[0m
+[0;32mI (41230) TX: Transmitter loop running[0m
+[0;32mI (41330) TX: Transmitter loop running[0m
+[0;32mI (41430) TX: Transmitter loop running[0m
+[0;32mI (41530) TX: Transmitter loop running[0m
+[0;32mI (41630) TX: Transmitter loop running[0m
+[0;32mI (41730) TX: Transmitter loop running[0m
+[0;32mI (41830) TX: Transmitter loop running[0m
+[0;32mI (41930) TX: Transmitter loop running[0m
+[0;32mI (42030) TX: Transmitter loop running[0m
+[0;32mI (42130) TX: Transmitter loop running[0m
+[0;32mI (42230) TX: Transmitter loop running[0m
+[0;32mI (42330) TX: Transmitter loop running[0m
+[0;32mI (42430) TX: Transmitter loop running[0m
+[0;32mI (42530) TX: Transmitter loop running[0m
+[0;32mI (42630) TX: Transmitter loop running[0m
+[0;32mI (42730) TX: Transmitter loop running[0m
+[0;32mI (42830) TX: Transmitter loop running[0m
+[0;32mI (42930) TX: Transmitter loop running[0m
+[0;32mI (43030) TX: Transmitter loop running[0m
+[0;32mI (43130) TX: Transmitter loop running[0m
+[0;32mI (43230) TX: Transmitter loop running[0m
+[0;32mI (43330) TX: Transmitter loop running[0m
+[0;32mI (43430) TX: Transmitter loop running[0m
+[0;32mI (43530) TX: Transmitter loop running[0m
+[0;32mI (43630) TX: Transmitter loop running[0m
+[0;32mI (43730) TX: Transmitter loop running[0m
+[0;32mI (43830) TX: Transmitter loop running[0m
+[0;32mI (43930) TX: Transmitter loop running[0m
+[0;32mI (44030) TX: Transmitter loop running[0m
+[0;32mI (44130) TX: Transmitter loop running[0m
+[0;32mI (44230) TX: Transmitter loop running[0m
+[0;32mI (44330) TX: Transmitter loop running[0m
+[0;32mI (44430) TX: Transmitter loop running[0m
+[0;32mI (44530) TX: Transmitter loop running[0m
+[0;32mI (44630) TX: Transmitter loop running[0m
+[0;32mI (44730) TX: Transmitter loop running[0m
+[0;32mI (44830) TX: Transmitter loop running[0m
+[0;32mI (44930) TX: Transmitter loop running[0m
+[0;32mI (45030) TX: Transmitter loop running[0m
+[0;32mI (45130) TX: Transmitter loop running[0m

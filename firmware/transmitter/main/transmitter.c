@@ -42,16 +42,46 @@ static void initialize_wifi(void)
   
 }
 
-void transmit_frame(){
-  char *frame = "hello\n";
-  int frame_length = 6;
-  esp_err_t err = esp_wifi_80211_tx(
-                                    WIFI_IF_STA,
-                                    frame,
-                                    frame_length,
-                                    true
-                                   );
-  ESP_ERROR_CHECK(err);
+static esp_err_t transmit_frame(void){
+  uint8_t frame[] = {
+        // 802.11 MAC header (24 bytes)
+
+        0x40, 0x00,  // Frame Control: probe request
+        0x00, 0x00,  // Duration
+
+        // Address 1: destination (broadcast)
+        0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
+
+        // Address 2: source MAC (filled in below)
+        0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+
+        // Address 3: BSSID (wildcard)
+        0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
+
+        0x00, 0x00,  // Sequence Control
+
+        // Frame body: 802.11 information elements
+
+        0x00, 0x00,  // SSID: zero-length, wildcard
+
+        // Supported Rates: 1, 2, 5.5, 11 Mbps
+        0x01, 0x04, 0x82, 0x84, 0x8b, 0x96
+    };
+  uint8_t mac[6];
+  esp_err_t err = esp_wifi_get_mac(WIFI_IF_STA, mac);
+  if (err != ESP_OK){
+    return err;
+  }
+
+  memcpy(&frame[10], mac, 6);
+  
+  err = esp_wifi_80211_tx(
+                          WIFI_IF_STA,
+                          frame,
+                          sizeof(frame),
+                          true
+                         );
+  return err;
 }
 
 void app_main(void)
@@ -72,7 +102,10 @@ void app_main(void)
 
   while (true) {
     ESP_LOGI("TX", "Transmitter loop running");
-    transmit_frame();
+    esp_err_t err = transmit_frame();
+    if (err != ESP_OK){
+      ESP_LOGI("TX", "ERROR");
+    }
     vTaskDelay(pdMS_TO_TICKS(DUTY_CYCLE_PERIOD_MS));
   };
 }
