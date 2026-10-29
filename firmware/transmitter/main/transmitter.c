@@ -104,7 +104,10 @@ void app_main(void)
     ESP_LOGI("TX", "Transmitter loop running");
     esp_err_t err = transmit_frame();
     if (err != ESP_OK){
-      ESP_LOGI("TX", "ERROR");
+      ESP_LOGI("TX", "Transmit failed: %s",
+               esp_err_to_name(err));
+    }else {
+      ESP_LOGI("TX", "Frame submitted");
     }
     vTaskDelay(pdMS_TO_TICKS(DUTY_CYCLE_PERIOD_MS));
   };
