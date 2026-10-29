@@ -1,0 +1,43 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "/mnt/ohval/code/wifi-microscope/firmware/transmitter/build/CMakeFiles/bootloader"
+		},
+		{
+			"file" : "/mnt/ohval/code/wifi-microscope/firmware/transmitter/build/CMakeFiles/bootloader.rule"
+		},
+		{
+			"file" : "/mnt/ohval/code/wifi-microscope/firmware/transmitter/build/CMakeFiles/bootloader-complete.rule"
+		},
+		{
+			"file" : "/mnt/ohval/code/wifi-microscope/firmware/transmitter/build/bootloader-prefix/src/bootloader-stamp/bootloader-build.rule"
+		},
+		{
+			"file" : "/mnt/ohval/code/wifi-microscope/firmware/transmitter/build/bootloader-prefix/src/bootloader-stamp/bootloader-configure.rule"
+		},
+		{
+			"file" : "/mnt/ohval/code/wifi-microscope/firmware/transmitter/build/bootloader-prefix/src/bootloader-stamp/bootloader-download.rule"
+		},
+		{
+			"file" : "/mnt/ohval/code/wifi-microscope/firmware/transmitter/build/bootloader-prefix/src/bootloader-stamp/bootloader-install.rule"
+		},
+		{
+			"file" : "/mnt/ohval/code/wifi-microscope/firmware/transmitter/build/bootloader-prefix/src/bootloader-stamp/bootloader-mkdir.rule"
+		},
+		{
+			"file" : "/mnt/ohval/code/wifi-microscope/firmware/transmitter/build/bootloader-prefix/src/bootloader-stamp/bootloader-patch.rule"
+		},
+		{
+			"file" : "/mnt/ohval/code/wifi-microscope/firmware/transmitter/build/bootloader-prefix/src/bootloader-stamp/bootloader-update.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"bootloader"
+		],
+		"name" : "bootloader"
+	}
+}

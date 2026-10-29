@@ -1,0 +1,13 @@
+# Target labels
+ bootloader
+# Source files and their labels
+/mnt/ohval/code/wifi-microscope/firmware/transmitter/build/CMakeFiles/bootloader
+/mnt/ohval/code/wifi-microscope/firmware/transmitter/build/CMakeFiles/bootloader.rule
+/mnt/ohval/code/wifi-microscope/firmware/transmitter/build/CMakeFiles/bootloader-complete.rule
+/mnt/ohval/code/wifi-microscope/firmware/transmitter/build/bootloader-prefix/src/bootloader-stamp/bootloader-build.rule
+/mnt/ohval/code/wifi-microscope/firmware/transmitter/build/bootloader-prefix/src/bootloader-stamp/bootloader-configure.rule
+/mnt/ohval/code/wifi-microscope/firmware/transmitter/build/bootloader-prefix/src/bootloader-stamp/bootloader-download.rule
+/mnt/ohval/code/wifi-microscope/firmware/transmitter/build/bootloader-prefix/src/bootloader-stamp/bootloader-install.rule
+/mnt/ohval/code/wifi-microscope/firmware/transmitter/build/bootloader-prefix/src/bootloader-stamp/bootloader-mkdir.rule
+/mnt/ohval/code/wifi-microscope/firmware/transmitter/build/bootloader-prefix/src/bootloader-stamp/bootloader-patch.rule
+/mnt/ohval/code/wifi-microscope/firmware/transmitter/build/bootloader-prefix/src/bootloader-stamp/bootloader-update.rule

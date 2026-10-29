@@ -1,0 +1,2 @@
+source /mnt/ohval/code/wifi-microscope/firmware/transmitter/build/bootloader/gdbinit/symbols
+source /mnt/ohval/code/wifi-microscope/firmware/transmitter/build/bootloader/gdbinit/connect
