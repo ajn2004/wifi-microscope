@@ -1,7 +1,7 @@
 {
     "version":            "1.2",
     "project_name":       "wifi_microscope_tx",
-    "project_version":    "00d4936-dirty",
+    "project_version":    "4391310-dirty",
     "project_path":       "/mnt/ohval/code/wifi-microscope/firmware/transmitter",
     "idf_path":           "/home/andrew/esp/esp-idf-v5.5.6",
     "build_dir":          "/mnt/ohval/code/wifi-microscope/firmware/transmitter/build",

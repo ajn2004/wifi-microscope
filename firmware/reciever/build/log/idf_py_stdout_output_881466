@@ -1,0 +1,112 @@
+Command: ninja flash
+[0/1] Re-running CMake...
+-- Component directory /home/andrew/esp/esp-idf-v5.5.6/components/esp_blockdev does not contain a CMakeLists.txt file. No component will be added
+-- Minimal build - OFF
+-- Building ESP-IDF components for target esp32
+NOTICE: Processing 1 dependencies:
+NOTICE: [1/1] idf (5.5.6)
+-- Project sdkconfig file /mnt/ohval/code/wifi-microscope/firmware/reciever/sdkconfig
+-- Compiler supported targets: xtensa-esp-elf
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- USING O3
+-- App "wifi_microscope_rx" version: 4391310-dirty
+-- Adding linker script /mnt/ohval/code/wifi-microscope/firmware/reciever/build/esp-idf/esp_system/ld/memory.ld
+-- Adding linker script /mnt/ohval/code/wifi-microscope/firmware/reciever/build/esp-idf/esp_system/ld/sections.ld.in
+-- Adding linker script /home/andrew/esp/esp-idf-v5.5.6/components/esp_rom/esp32/ld/esp32.rom.ld
+-- Adding linker script /home/andrew/esp/esp-idf-v5.5.6/components/esp_rom/esp32/ld/esp32.rom.api.ld
+-- Adding linker script /home/andrew/esp/esp-idf-v5.5.6/components/esp_rom/esp32/ld/esp32.rom.libgcc.ld
+-- Adding linker script /home/andrew/esp/esp-idf-v5.5.6/components/esp_rom/esp32/ld/esp32.rom.newlib-data.ld
+-- Adding linker script /home/andrew/esp/esp-idf-v5.5.6/components/esp_rom/esp32/ld/esp32.rom.syscalls.ld
+-- Adding linker script /home/andrew/esp/esp-idf-v5.5.6/components/esp_rom/esp32/ld/esp32.rom.libc-funcs.ld
+-- Adding linker script /home/andrew/esp/esp-idf-v5.5.6/components/esp_rom/esp32/ld/esp32.rom.newlib-reent-funcs.ld
+-- Adding linker script /home/andrew/esp/esp-idf-v5.5.6/components/soc/esp32/ld/esp32.peripherals.ld
+-- Components: app_trace app_update bootloader bootloader_support bt cmock console cxx driver efuse esp-tls esp_adc esp_app_format esp_bootloader_format esp_coex esp_common esp_driver_ana_cmpr esp_driver_bitscrambler esp_driver_cam esp_driver_dac esp_driver_gpio esp_driver_gptimer esp_driver_i2c esp_driver_i2s esp_driver_isp esp_driver_jpeg esp_driver_ledc esp_driver_mcpwm esp_driver_parlio esp_driver_pcnt esp_driver_ppa esp_driver_rmt esp_driver_sdio esp_driver_sdm esp_driver_sdmmc esp_driver_sdspi esp_driver_spi esp_driver_touch_sens esp_driver_tsens esp_driver_twai esp_driver_uart esp_driver_usb_serial_jtag esp_eth esp_event esp_gdbstub esp_hal_ieee802154 esp_hid esp_http_client esp_http_server esp_https_ota esp_https_server esp_hw_support esp_lcd esp_local_ctrl esp_mm esp_netif esp_netif_stack esp_partition esp_phy esp_pm esp_psram esp_ringbuf esp_rom esp_security esp_system esp_timer esp_vfs_console esp_wifi espcoredump esptool_py fatfs freertos hal heap http_parser idf_test ieee802154 json log lwip main mbedtls mqtt newlib nvs_flash nvs_sec_provider openthread partition_table perfmon protobuf-c protocomm pthread rt sdmmc soc spi_flash spiffs tcp_transport ulp unity usb vfs wear_levelling wifi_provisioning wpa_supplicant xtensa
+-- Component paths: /home/andrew/esp/esp-idf-v5.5.6/components/app_trace /home/andrew/esp/esp-idf-v5.5.6/components/app_update /home/andrew/esp/esp-idf-v5.5.6/components/bootloader /home/andrew/esp/esp-idf-v5.5.6/components/bootloader_support /home/andrew/esp/esp-idf-v5.5.6/components/bt /home/andrew/esp/esp-idf-v5.5.6/components/cmock /home/andrew/esp/esp-idf-v5.5.6/components/console /home/andrew/esp/esp-idf-v5.5.6/components/cxx /home/andrew/esp/esp-idf-v5.5.6/components/driver /home/andrew/esp/esp-idf-v5.5.6/components/efuse /home/andrew/esp/esp-idf-v5.5.6/components/esp-tls /home/andrew/esp/esp-idf-v5.5.6/components/esp_adc /home/andrew/esp/esp-idf-v5.5.6/components/esp_app_format /home/andrew/esp/esp-idf-v5.5.6/components/esp_bootloader_format /home/andrew/esp/esp-idf-v5.5.6/components/esp_coex /home/andrew/esp/esp-idf-v5.5.6/components/esp_common /home/andrew/esp/esp-idf-v5.5.6/components/esp_driver_ana_cmpr /home/andrew/esp/esp-idf-v5.5.6/components/esp_driver_bitscrambler /home/andrew/esp/esp-idf-v5.5.6/components/esp_driver_cam /home/andrew/esp/esp-idf-v5.5.6/components/esp_driver_dac /home/andrew/esp/esp-idf-v5.5.6/components/esp_driver_gpio /home/andrew/esp/esp-idf-v5.5.6/components/esp_driver_gptimer /home/andrew/esp/esp-idf-v5.5.6/components/esp_driver_i2c /home/andrew/esp/esp-idf-v5.5.6/components/esp_driver_i2s /home/andrew/esp/esp-idf-v5.5.6/components/esp_driver_isp /home/andrew/esp/esp-idf-v5.5.6/components/esp_driver_jpeg /home/andrew/esp/esp-idf-v5.5.6/components/esp_driver_ledc /home/andrew/esp/esp-idf-v5.5.6/components/esp_driver_mcpwm /home/andrew/esp/esp-idf-v5.5.6/components/esp_driver_parlio /home/andrew/esp/esp-idf-v5.5.6/components/esp_driver_pcnt /home/andrew/esp/esp-idf-v5.5.6/components/esp_driver_ppa /home/andrew/esp/esp-idf-v5.5.6/components/esp_driver_rmt /home/andrew/esp/esp-idf-v5.5.6/components/esp_driver_sdio /home/andrew/esp/esp-idf-v5.5.6/components/esp_driver_sdm /home/andrew/esp/esp-idf-v5.5.6/components/esp_driver_sdmmc /home/andrew/esp/esp-idf-v5.5.6/components/esp_driver_sdspi /home/andrew/esp/esp-idf-v5.5.6/components/esp_driver_spi /home/andrew/esp/esp-idf-v5.5.6/components/esp_driver_touch_sens /home/andrew/esp/esp-idf-v5.5.6/components/esp_driver_tsens /home/andrew/esp/esp-idf-v5.5.6/components/esp_driver_twai /home/andrew/esp/esp-idf-v5.5.6/components/esp_driver_uart /home/andrew/esp/esp-idf-v5.5.6/components/esp_driver_usb_serial_jtag /home/andrew/esp/esp-idf-v5.5.6/components/esp_eth /home/andrew/esp/esp-idf-v5.5.6/components/esp_event /home/andrew/esp/esp-idf-v5.5.6/components/esp_gdbstub /home/andrew/esp/esp-idf-v5.5.6/components/esp_hal_ieee802154 /home/andrew/esp/esp-idf-v5.5.6/components/esp_hid /home/andrew/esp/esp-idf-v5.5.6/components/esp_http_client /home/andrew/esp/esp-idf-v5.5.6/components/esp_http_server /home/andrew/esp/esp-idf-v5.5.6/components/esp_https_ota /home/andrew/esp/esp-idf-v5.5.6/components/esp_https_server /home/andrew/esp/esp-idf-v5.5.6/components/esp_hw_support /home/andrew/esp/esp-idf-v5.5.6/components/esp_lcd /home/andrew/esp/esp-idf-v5.5.6/components/esp_local_ctrl /home/andrew/esp/esp-idf-v5.5.6/components/esp_mm /home/andrew/esp/esp-idf-v5.5.6/components/esp_netif /home/andrew/esp/esp-idf-v5.5.6/components/esp_netif_stack /home/andrew/esp/esp-idf-v5.5.6/components/esp_partition /home/andrew/esp/esp-idf-v5.5.6/components/esp_phy /home/andrew/esp/esp-idf-v5.5.6/components/esp_pm /home/andrew/esp/esp-idf-v5.5.6/components/esp_psram /home/andrew/esp/esp-idf-v5.5.6/components/esp_ringbuf /home/andrew/esp/esp-idf-v5.5.6/components/esp_rom /home/andrew/esp/esp-idf-v5.5.6/components/esp_security /home/andrew/esp/esp-idf-v5.5.6/components/esp_system /home/andrew/esp/esp-idf-v5.5.6/components/esp_timer /home/andrew/esp/esp-idf-v5.5.6/components/esp_vfs_console /home/andrew/esp/esp-idf-v5.5.6/components/esp_wifi /home/andrew/esp/esp-idf-v5.5.6/components/espcoredump /home/andrew/esp/esp-idf-v5.5.6/components/esptool_py /home/andrew/esp/esp-idf-v5.5.6/components/fatfs /home/andrew/esp/esp-idf-v5.5.6/components/freertos /home/andrew/esp/esp-idf-v5.5.6/components/hal /home/andrew/esp/esp-idf-v5.5.6/components/heap /home/andrew/esp/esp-idf-v5.5.6/components/http_parser /home/andrew/esp/esp-idf-v5.5.6/components/idf_test /home/andrew/esp/esp-idf-v5.5.6/components/ieee802154 /home/andrew/esp/esp-idf-v5.5.6/components/json /home/andrew/esp/esp-idf-v5.5.6/components/log /home/andrew/esp/esp-idf-v5.5.6/components/lwip /mnt/ohval/code/wifi-microscope/firmware/reciever/main /home/andrew/esp/esp-idf-v5.5.6/components/mbedtls /home/andrew/esp/esp-idf-v5.5.6/components/mqtt /home/andrew/esp/esp-idf-v5.5.6/components/newlib /home/andrew/esp/esp-idf-v5.5.6/components/nvs_flash /home/andrew/esp/esp-idf-v5.5.6/components/nvs_sec_provider /home/andrew/esp/esp-idf-v5.5.6/components/openthread /home/andrew/esp/esp-idf-v5.5.6/components/partition_table /home/andrew/esp/esp-idf-v5.5.6/components/perfmon /home/andrew/esp/esp-idf-v5.5.6/components/protobuf-c /home/andrew/esp/esp-idf-v5.5.6/components/protocomm /home/andrew/esp/esp-idf-v5.5.6/components/pthread /home/andrew/esp/esp-idf-v5.5.6/components/rt /home/andrew/esp/esp-idf-v5.5.6/components/sdmmc /home/andrew/esp/esp-idf-v5.5.6/components/soc /home/andrew/esp/esp-idf-v5.5.6/components/spi_flash /home/andrew/esp/esp-idf-v5.5.6/components/spiffs /home/andrew/esp/esp-idf-v5.5.6/components/tcp_transport /home/andrew/esp/esp-idf-v5.5.6/components/ulp /home/andrew/esp/esp-idf-v5.5.6/components/unity /home/andrew/esp/esp-idf-v5.5.6/components/usb /home/andrew/esp/esp-idf-v5.5.6/components/vfs /home/andrew/esp/esp-idf-v5.5.6/components/wear_levelling /home/andrew/esp/esp-idf-v5.5.6/components/wifi_provisioning /home/andrew/esp/esp-idf-v5.5.6/components/wpa_supplicant /home/andrew/esp/esp-idf-v5.5.6/components/xtensa
+-- Configuring done (2.5s)
+-- Generating done (0.3s)
+-- Build files have been written to: /mnt/ohval/code/wifi-microscope/firmware/reciever/build
+[1/11] Building C object esp-idf/esp_app_format/CMakeFiles/__idf_esp_app_format.dir/esp_app_desc.c.obj
+[2/11] Linking C static library esp-idf/esp_app_format/libesp_app_format.a
+[3/11] Performing build step for 'bootloader'
+[1/1] cd /mnt/ohval/code/wifi-microscope/firmware/reciever/build/bootloader/esp-idf/esptool_py && /home/andrew/.espressif/python_env/idf5.5_py3.14_env/bin/python /home/andrew/esp/esp-idf-v5.5.6/components/partition_table/check_sizes.py --offset 0x8000 bootloader 0x1000 /mnt/ohval/code/wifi-microscope/firmware/reciever/build/bootloader/bootloader.bin
+Bootloader binary size 0x6590 bytes. 0xa70 bytes (9%) free.
+[4/11] No install step for 'bootloader'
+[5/11] Completed 'bootloader'
+[6/11] Generating esp-idf/esp_system/ld/sections.ld
+[7/11] Linking CXX executable wifi_microscope_rx.elf
+[8/11] Generating binary image from built executable
+esptool.py v4.12.0
+Creating esp32 image...
+Merged 2 ELF sections
+Successfully created esp32 image.
+Generated /mnt/ohval/code/wifi-microscope/firmware/reciever/build/wifi_microscope_rx.bin
+[9/11] cd /mnt/ohval/code/wifi-microscope/firmware/reciever/build/esp-idf/esptool_py && /home/andrew/.espressif/python_env/idf5.5_py3.14_env/bin/python /home/andrew/esp/esp-idf-v5.5.6/components/partition_table/check_sizes.py --offset 0x8000 partition --type app /mnt/ohval/code/wifi-microscope/firmware/reciever/build/partition_table/partition-table.bin /mnt/ohval/code/wifi-microscope/firmware/reciever/build/wifi_microscope_rx.bin
+wifi_microscope_rx.bin binary size 0xb1990 bytes. Smallest app partition is 0x100000 bytes. 0x4e670 bytes (31%) free.
+[9/11] cd /home/andrew/esp/esp-idf-v5.5.6/components/esptool_py && /usr/bin/cmake -D IDF_PATH=/home/andrew/esp/esp-idf-v5.5.6 -D "SERIAL_TOOL=/home/andrew/.espressif/python_env/idf5.5_py3.14_env/bin/python;;/home/andrew/esp/esp-idf-v5.5.6/components/esptool_py/esptool/esptool.py;--chip;esp32" -D "SERIAL_TOOL_ARGS=--before=default_reset;--after=hard_reset;write_flash;@flash_args" -D WORKING_DIRECTORY=/mnt/ohval/code/wifi-microscope/firmware/reciever/build -P /home/andrew/esp/esp-idf-v5.5.6/components/esptool_py/run_serial_tool.cmake
+esptool.py --chip esp32 -p /dev/ttyUSB1 -b 115200 --before=default_reset --after=hard_reset write_flash --flash_mode dio --flash_freq 40m --flash_size 2MB 0x1000 bootloader/bootloader.bin 0x10000 wifi_microscope_rx.bin 0x8000 partition_table/partition-table.bin
+esptool.py v4.12.0
+Serial port /dev/ttyUSB1
+Connecting.....
+Chip is ESP32-D0WD-V3 (revision v3.1)
+Features: WiFi, BT, Dual Core, 240MHz, VRef calibration in efuse, Coding Scheme None
+Crystal is 40MHz
+MAC: 8c:94:df:96:20:40
+Uploading stub...
+Running stub...
+Stub running...
+Configuring flash size...
+Flash will be erased from 0x00001000 to 0x00007fff...
+Flash will be erased from 0x00010000 to 0x000c1fff...
+Flash will be erased from 0x00008000 to 0x00008fff...
+SHA digest in image updated
+Compressed 26000 bytes to 16484...
+Writing at 0x00001000... (50 %)
+Writing at 0x00007508... (100 %)
+Wrote 26000 bytes (16484 compressed) at 0x00001000 in 1.7 seconds (effective 124.9 kbit/s)...
+Hash of data verified.
+Compressed 727440 bytes to 464785...
+Writing at 0x00010000... (3 %)
+Writing at 0x0001bca8... (6 %)
+Writing at 0x0002414b... (10 %)
+Writing at 0x0002e302... (13 %)
+Writing at 0x00033d22... (17 %)
+Writing at 0x00039bb4... (20 %)
+Writing at 0x0003f880... (24 %)
+Writing at 0x00045847... (27 %)
+Writing at 0x0004b35d... (31 %)
+Writing at 0x00051033... (34 %)
+Writing at 0x0005687a... (37 %)
+Writing at 0x0005bdc8... (41 %)
+Writing at 0x00061463... (44 %)
+Writing at 0x000668e8... (48 %)
+Writing at 0x0006c3ef... (51 %)
+Writing at 0x00072036... (55 %)
+Writing at 0x00077c58... (58 %)
+Writing at 0x0007d6d5... (62 %)
+Writing at 0x00083402... (65 %)
+Writing at 0x00088ef4... (68 %)
+Writing at 0x0008ec15... (72 %)
+Writing at 0x00094912... (75 %)
+Writing at 0x0009a362... (79 %)
+Writing at 0x000a0621... (82 %)
+Writing at 0x000a88fc... (86 %)
+Writing at 0x000ae529... (89 %)
+Writing at 0x000b3ff3... (93 %)
+Writing at 0x000b9fb4... (96 %)
+Writing at 0x000bf2fd... (100 %)
+Wrote 727440 bytes (464785 compressed) at 0x00010000 in 41.3 seconds (effective 140.9 kbit/s)...
+Hash of data verified.
+Compressed 3072 bytes to 103...
+Writing at 0x00008000... (100 %)
+Wrote 3072 bytes (103 compressed) at 0x00008000 in 0.0 seconds (effective 667.9 kbit/s)...
+Hash of data verified.
+
+Leaving...
+Hard resetting via RTS pin...

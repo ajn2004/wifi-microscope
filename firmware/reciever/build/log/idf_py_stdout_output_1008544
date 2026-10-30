@@ -1,0 +1,69 @@
+Command: ninja flash
+[1/5] cd /mnt/ohval/code/wifi-microscope/firmware/reciever/build/esp-idf/esptool_py && /home/andrew/.espressif/python_env/idf5.5_py3.14_env/bin/python /home/andrew/esp/esp-idf-v5.5.6/components/partition_table/check_sizes.py --offset 0x8000 partition --type app /mnt/ohval/code/wifi-microscope/firmware/reciever/build/partition_table/partition-table.bin /mnt/ohval/code/wifi-microscope/firmware/reciever/build/wifi_microscope_rx.bin
+wifi_microscope_rx.bin binary size 0xb1980 bytes. Smallest app partition is 0x100000 bytes. 0x4e680 bytes (31%) free.
+[2/5] Performing build step for 'bootloader'
+[1/1] cd /mnt/ohval/code/wifi-microscope/firmware/reciever/build/bootloader/esp-idf/esptool_py && /home/andrew/.espressif/python_env/idf5.5_py3.14_env/bin/python /home/andrew/esp/esp-idf-v5.5.6/components/partition_table/check_sizes.py --offset 0x8000 bootloader 0x1000 /mnt/ohval/code/wifi-microscope/firmware/reciever/build/bootloader/bootloader.bin
+Bootloader binary size 0x6590 bytes. 0xa70 bytes (9%) free.
+[3/5] No install step for 'bootloader'
+[4/5] Completed 'bootloader'
+[4/5] cd /home/andrew/esp/esp-idf-v5.5.6/components/esptool_py && /usr/bin/cmake -D IDF_PATH=/home/andrew/esp/esp-idf-v5.5.6 -D "SERIAL_TOOL=/home/andrew/.espressif/python_env/idf5.5_py3.14_env/bin/python;;/home/andrew/esp/esp-idf-v5.5.6/components/esptool_py/esptool/esptool.py;--chip;esp32" -D "SERIAL_TOOL_ARGS=--before=default_reset;--after=hard_reset;write_flash;@flash_args" -D WORKING_DIRECTORY=/mnt/ohval/code/wifi-microscope/firmware/reciever/build -P /home/andrew/esp/esp-idf-v5.5.6/components/esptool_py/run_serial_tool.cmake
+esptool.py --chip esp32 -p /dev/ttyUSB1 -b 115200 --before=default_reset --after=hard_reset write_flash --flash_mode dio --flash_freq 40m --flash_size 2MB 0x1000 bootloader/bootloader.bin 0x10000 wifi_microscope_rx.bin 0x8000 partition_table/partition-table.bin
+esptool.py v4.12.0
+Serial port /dev/ttyUSB1
+Connecting......
+Chip is ESP32-D0WD-V3 (revision v3.1)
+Features: WiFi, BT, Dual Core, 240MHz, VRef calibration in efuse, Coding Scheme None
+Crystal is 40MHz
+MAC: 8c:94:df:96:20:40
+Uploading stub...
+Running stub...
+Stub running...
+Configuring flash size...
+Flash will be erased from 0x00001000 to 0x00007fff...
+Flash will be erased from 0x00010000 to 0x000c1fff...
+Flash will be erased from 0x00008000 to 0x00008fff...
+SHA digest in image updated
+Compressed 26000 bytes to 16484...
+Writing at 0x00001000... (50 %)
+Writing at 0x00007508... (100 %)
+Wrote 26000 bytes (16484 compressed) at 0x00001000 in 1.7 seconds (effective 124.6 kbit/s)...
+Hash of data verified.
+Compressed 727424 bytes to 464776...
+Writing at 0x00010000... (3 %)
+Writing at 0x0001bc91... (6 %)
+Writing at 0x00024141... (10 %)
+Writing at 0x0002e2f6... (13 %)
+Writing at 0x00033d15... (17 %)
+Writing at 0x00039ba9... (20 %)
+Writing at 0x0003f870... (24 %)
+Writing at 0x00045838... (27 %)
+Writing at 0x0004b352... (31 %)
+Writing at 0x00051030... (34 %)
+Writing at 0x0005687f... (37 %)
+Writing at 0x0005bdc8... (41 %)
+Writing at 0x00061466... (44 %)
+Writing at 0x000668ea... (48 %)
+Writing at 0x0006c3ed... (51 %)
+Writing at 0x00072042... (55 %)
+Writing at 0x00077c5d... (58 %)
+Writing at 0x0007d6da... (62 %)
+Writing at 0x0008340c... (65 %)
+Writing at 0x00088ef9... (68 %)
+Writing at 0x0008ec1a... (72 %)
+Writing at 0x00094913... (75 %)
+Writing at 0x0009a373... (79 %)
+Writing at 0x000a0627... (82 %)
+Writing at 0x000a88ff... (86 %)
+Writing at 0x000ae533... (89 %)
+Writing at 0x000b3ff6... (93 %)
+Writing at 0x000b9fc6... (96 %)
+Writing at 0x000bf2ff... (100 %)
+Wrote 727424 bytes (464776 compressed) at 0x00010000 in 41.3 seconds (effective 140.9 kbit/s)...
+Hash of data verified.
+Compressed 3072 bytes to 103...
+Writing at 0x00008000... (100 %)
+Wrote 3072 bytes (103 compressed) at 0x00008000 in 0.0 seconds (effective 668.2 kbit/s)...
+Hash of data verified.
+
+Leaving...
+Hard resetting via RTS pin...

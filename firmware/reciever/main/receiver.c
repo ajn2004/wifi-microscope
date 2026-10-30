@@ -21,6 +21,7 @@
 
 #define WIFI_MODE WIFI_MODE_STA
 #define WIFI_CHANNEL 6
+static const uint8_t TX_MAC[6] = {0x1c, 0xc3, 0xab, 0x3c, 0x96, 0x10};
 
 typedef struct {
   uint8_t source_mac[6];
@@ -67,12 +68,17 @@ static void receive_callback(void *buf, wifi_promiscuous_pkt_type_t type) {
     return;
   }
 
+  if (memcmp(&frame[10], TX_MAC, sizeof(TX_MAC)) != 0) {
+    return;
+  }
+
   rx_measurement_t measurement = {
     .rssi = packet->rx_ctrl.rssi,
     .channel = packet->rx_ctrl.channel,
     .timestamp = packet->rx_ctrl.timestamp,
   };
   memcpy(measurement.source_mac, &frame[10], sizeof(measurement.source_mac));
+  // Report to serial
   xQueueSend(rx_queue, &measurement, 0);
 }
 
