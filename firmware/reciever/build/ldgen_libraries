@@ -159,3 +159,4 @@
 /mnt/ohval/code/wifi-microscope/firmware/reciever/build/esp-idf/spiffs/libspiffs.a
 /mnt/ohval/code/wifi-microscope/firmware/reciever/build/esp-idf/wifi_provisioning/libwifi_provisioning.a
 /mnt/ohval/code/wifi-microscope/firmware/reciever/build/esp-idf/json/libjson.a
+/mnt/ohval/code/wifi-microscope/firmware/reciever/build/esp-idf/main/libmain.a

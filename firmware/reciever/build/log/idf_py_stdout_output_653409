@@ -1,0 +1,28 @@
+Command: ninja flash
+[1/5] cd /mnt/ohval/code/wifi-microscope/firmware/reciever/build/esp-idf/esptool_py && /home/andrew/.espressif/python_env/idf5.5_py3.14_env/bin/python /home/andrew/esp/esp-idf-v5.5.6/components/partition_table/check_sizes.py --offset 0x8000 partition --type app /mnt/ohval/code/wifi-microscope/firmware/reciever/build/partition_table/partition-table.bin /mnt/ohval/code/wifi-microscope/firmware/reciever/build/wifi_microscope_rx.bin
+wifi_microscope_rx.bin binary size 0xb1990 bytes. Smallest app partition is 0x100000 bytes. 0x4e670 bytes (31%) free.
+[2/5] Performing build step for 'bootloader'
+[1/1] cd /mnt/ohval/code/wifi-microscope/firmware/reciever/build/bootloader/esp-idf/esptool_py && /home/andrew/.espressif/python_env/idf5.5_py3.14_env/bin/python /home/andrew/esp/esp-idf-v5.5.6/components/partition_table/check_sizes.py --offset 0x8000 bootloader 0x1000 /mnt/ohval/code/wifi-microscope/firmware/reciever/build/bootloader/bootloader.bin
+Bootloader binary size 0x6590 bytes. 0xa70 bytes (9%) free.
+[3/5] No install step for 'bootloader'
+[4/5] Completed 'bootloader'
+[4/5] cd /home/andrew/esp/esp-idf-v5.5.6/components/esptool_py && /usr/bin/cmake -D IDF_PATH=/home/andrew/esp/esp-idf-v5.5.6 -D "SERIAL_TOOL=/home/andrew/.espressif/python_env/idf5.5_py3.14_env/bin/python;;/home/andrew/esp/esp-idf-v5.5.6/components/esptool_py/esptool/esptool.py;--chip;esp32" -D "SERIAL_TOOL_ARGS=--before=default_reset;--after=hard_reset;write_flash;@flash_args" -D WORKING_DIRECTORY=/mnt/ohval/code/wifi-microscope/firmware/reciever/build -P /home/andrew/esp/esp-idf-v5.5.6/components/esptool_py/run_serial_tool.cmake
+esptool.py --chip esp32 -p /dev/ttyUSB1 -b 460800 --before=default_reset --after=hard_reset write_flash --flash_mode dio --flash_freq 40m --flash_size 2MB 0x1000 bootloader/bootloader.bin 0x10000 wifi_microscope_rx.bin 0x8000 partition_table/partition-table.bin
+esptool.py v4.12.0
+Serial port /dev/ttyUSB1
+Connecting...............
+Chip is ESP32-D0WD-V3 (revision v3.1)
+Features: WiFi, BT, Dual Core, 240MHz, VRef calibration in efuse, Coding Scheme None
+WARNING: Detected crystal freq 15.32MHz is quite different to normalized freq 26MHz. Unsupported crystal in use?
+Crystal is 26MHz
+MAC: 8c:94:df:96:20:40
+Uploading stub...
+Running stub...
+Stub running...
+Changing baud rate to 460800
+Changed.
+
+A fatal error occurred: Unable to verify flash chip connection (No serial data received.).
+FAILED: [code=1] CMakeFiles/flash /mnt/ohval/code/wifi-microscope/firmware/reciever/build/CMakeFiles/flash 
+cd /home/andrew/esp/esp-idf-v5.5.6/components/esptool_py && /usr/bin/cmake -D IDF_PATH=/home/andrew/esp/esp-idf-v5.5.6 -D "SERIAL_TOOL=/home/andrew/.espressif/python_env/idf5.5_py3.14_env/bin/python;;/home/andrew/esp/esp-idf-v5.5.6/components/esptool_py/esptool/esptool.py;--chip;esp32" -D "SERIAL_TOOL_ARGS=--before=default_reset;--after=hard_reset;write_flash;@flash_args" -D WORKING_DIRECTORY=/mnt/ohval/code/wifi-microscope/firmware/reciever/build -P /home/andrew/esp/esp-idf-v5.5.6/components/esptool_py/run_serial_tool.cmake
+ninja: build stopped: subcommand failed.

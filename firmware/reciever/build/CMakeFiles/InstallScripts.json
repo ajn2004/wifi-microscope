@@ -119,7 +119,8 @@
 		"/mnt/ohval/code/wifi-microscope/firmware/reciever/build/esp-idf/spiffs/cmake_install.cmake",
 		"/mnt/ohval/code/wifi-microscope/firmware/reciever/build/esp-idf/ulp/cmake_install.cmake",
 		"/mnt/ohval/code/wifi-microscope/firmware/reciever/build/esp-idf/usb/cmake_install.cmake",
-		"/mnt/ohval/code/wifi-microscope/firmware/reciever/build/esp-idf/wifi_provisioning/cmake_install.cmake"
+		"/mnt/ohval/code/wifi-microscope/firmware/reciever/build/esp-idf/wifi_provisioning/cmake_install.cmake",
+		"/mnt/ohval/code/wifi-microscope/firmware/reciever/build/esp-idf/main/cmake_install.cmake"
 	],
 	"Parallel" : false
 }
