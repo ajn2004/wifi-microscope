@@ -1,7 +1,7 @@
 {
     "version":            "1.2",
     "project_name":       "wifi_microscope_rx",
-    "project_version":    "976f72e-dirty",
+    "project_version":    "5fb47da-dirty",
     "project_path":       "/mnt/ohval/code/wifi-microscope/firmware/reciever",
     "idf_path":           "/home/andrew/esp/esp-idf-v5.5.6",
     "build_dir":          "/mnt/ohval/code/wifi-microscope/firmware/reciever/build",

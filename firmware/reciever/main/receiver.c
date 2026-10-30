@@ -145,17 +145,14 @@ void app_main(void) {
   // initialize wifie
   initialize_wifi();
 
-  rx_queue = xQueueCreate(32, sizeof(rx_measurement_t));
-  configASSERT(rx_queue != NULL);
+  csi_queue = xQueueCreate(8, sizeof(csi_record_t));
+  configASSERT(csi_queue != NULL);
 
   // accept management frames
   wifi_promiscuous_filter_t filter = {
     .filter_mask = WIFI_PROMIS_FILTER_MASK_MGMT};
 
   ESP_ERROR_CHECK(esp_wifi_set_promiscuous_filter(&filter));
-
-  // Register our callback
-  ESP_ERROR_CHECK(esp_wifi_set_promiscuous_rx_cb(receive_callback));
 
   // Begin receiving frames in promiscuous mode
   ESP_ERROR_CHECK(esp_wifi_set_promiscuous(true));
