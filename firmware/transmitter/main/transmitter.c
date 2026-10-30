@@ -19,7 +19,7 @@
 #include "freertos/task.h"
 
 #define ESPNOW_MAXDELAY 512
-#define DUTY_CYCLE_PERIOD_MS 10
+#define DUTY_CYCLE_PERIOD_MS 100
 #define WIFI_MODE WIFI_MODE_STA
 #define WIFI_CHANNEL 6
 
@@ -32,6 +32,7 @@ static void initialize_wifi(void) {
   // initialize the driver
   wifi_init_config_t cfg = WIFI_INIT_CONFIG_DEFAULT();
   ESP_ERROR_CHECK(esp_wifi_init(&cfg));
+  ESP_ERROR_CHECK(esp_wifi_config_80211_tx_rate(WIFI_IF_STA, WIFI_PHY_RATE_6M));
 
   // Configure the wifi interface
   ESP_ERROR_CHECK(esp_wifi_set_storage(WIFI_STORAGE_RAM));

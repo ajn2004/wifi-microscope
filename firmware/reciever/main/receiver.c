@@ -13,6 +13,7 @@
 #include <inttypes.h>
 #include <stdbool.h>
 #include <stdint.h>
+#include <stdio.h>
 #include <string.h>
 
 #include "freertos/FreeRTOS.h"
@@ -29,6 +30,22 @@ typedef struct {
   uint8_t channel;
   uint32_t timestamp;
 } rx_measurement_t;
+
+#define CSI_MAX_BYTES 640
+
+typedef struct {
+  uint8_t source_mac[6];
+  uint32_t timestamp;
+  int8_t rssi;
+  uint8_t channel;
+  uint8_t sig_mode;
+  uint8_t rate_code;
+  bool first_word_invalid;
+  uint16_t len;
+  uint8_t bytes[CSI_MAX_BYTES];
+} csi_record_t;
+
+static QueueHandle_t csi_queue;
 
 static QueueHandle_t rx_queue;
 
@@ -82,6 +99,39 @@ static void receive_callback(void *buf, wifi_promiscuous_pkt_type_t type) {
   xQueueSend(rx_queue, &measurement, 0);
 }
 
+static void csi_receive_callback(void *ctx, wifi_csi_info_t *info) {
+  (void)ctx;
+  if (info == NULL || info->buf == NULL) {
+    return;
+  }
+
+  // Only accept CSI from our transmitter
+  if (memcmp(info->mac, TX_MAC, sizeof(TX_MAC)) != 0) {
+    return;
+  }
+
+  // validate the sample length before copying
+  if (info->len == 0 || info->len > CSI_MAX_BYTES) {
+    return;
+  }
+
+  csi_record_t record = {
+    .timestamp = info->rx_ctrl.timestamp,
+    .rssi = info->rx_ctrl.rssi,
+    .channel = info->rx_ctrl.channel,
+    .sig_mode = info->rx_ctrl.sig_mode,
+    .rate_code = info->rx_ctrl.rate,
+    .first_word_invalid = info->first_word_invalid,
+    .len = info->len,
+  };
+
+  // copy this into the out-read queue
+  memcpy(record.source_mac, info->mac, 6);
+  memcpy(record.bytes, info->buf, info->len);
+
+  (void)xQueueSend(csi_queue, &record, 0);
+}
+
 void app_main(void) {
   // initialize NVS
   esp_err_t ret = nvs_flash_init();
@@ -110,16 +160,45 @@ void app_main(void) {
   // Begin receiving frames in promiscuous mode
   ESP_ERROR_CHECK(esp_wifi_set_promiscuous(true));
 
-  rx_measurement_t measurement;
+  // Configure which training fields we want
+  wifi_csi_config_t csi_cfg = {
+    .lltf_en = true,
+    .htltf_en = true,
+    .stbc_htltf2_en = false,
+    .ltf_merge_en = false,
+    .channel_filter_en = false,
+    .manu_scale = false,
+    .shift = 0,
+  };
+
+  // Register our CSI callback
+  ESP_ERROR_CHECK(esp_wifi_set_csi_rx_cb(csi_receive_callback, NULL));
+
+  // Apply configuration
+  ESP_ERROR_CHECK(esp_wifi_set_csi_config(&csi_cfg));
+
+  // Start CSI capture
+  ESP_ERROR_CHECK(esp_wifi_set_csi(true));
+
+  ESP_LOGI("RX", "CSI capture enabled");
+
+  csi_record_t sample;
+
   while (true) {
-    if (xQueueReceive(rx_queue, &measurement, portMAX_DELAY) == pdTRUE) {
-      ESP_LOGI("RX",
-        "probe received, source=%02x:%02x:%02x:%02x:%02x:%02x, RSSI=%d dBm, "
-        "ch=%u, t=%" PRIu32,
-        measurement.source_mac[0], measurement.source_mac[1],
-        measurement.source_mac[2], measurement.source_mac[3],
-        measurement.source_mac[4], measurement.source_mac[5], measurement.rssi,
-        measurement.channel, measurement.timestamp);
+    if (xQueueReceive(csi_queue, &sample, portMAX_DELAY) != pdTRUE) {
+      continue;
     }
+
+    printf("CSI,%" PRIu32 ",%d,%u,%u,%u,%u,%u,", sample.timestamp,
+      (int)sample.rssi, (unsigned)sample.channel, (unsigned)sample.sig_mode,
+      (unsigned)sample.rate_code, (unsigned)sample.first_word_invalid,
+      (unsigned)sample.len);
+
+    // Raw CSI bytes, encoded as hexadecimal
+    for (uint16_t i = 0; i < sample.len; i++) {
+      printf("%02x", (unsigned)sample.bytes[i]);
+    }
+
+    putchar('\n');
   }
 }
