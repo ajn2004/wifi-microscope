@@ -4,6 +4,7 @@
 /data/runs/
 
 # Build outputs and local tool configuration
+firmware/*/build/
 /build/
 /firmware/build/
 /host/build/
